@@ -19,13 +19,13 @@ NewProject::NewProject(const QString& workDir) {
     m_targetComboBox->addItem(tr("Application"));
     m_targetComboBox->addItem(tr("Library"));
 
-    m_directoryBrowseLayout = new BrowseLayout(workDir);
-    connect(m_directoryBrowseLayout->lineEdit(), &QLineEdit::textChanged, this, &NewProject::setOkButtonState);
+    m_workspaceBrowseLayout = new BrowseLayout(workDir);
+    connect(m_workspaceBrowseLayout->lineEdit(), &QLineEdit::textChanged, this, &NewProject::setOkButtonState);
 
     auto formLayout = new QFormLayout;
     formLayout->addRow(tr("Name:"), m_nameLineEdit);
     formLayout->addRow(tr("Target:"), m_targetComboBox);
-    formLayout->addRow(tr("Directory:"), m_directoryBrowseLayout);
+    formLayout->addRow(tr("Workspace:"), m_workspaceBrowseLayout);
     formLayout->itemAt(formLayout->indexOf(m_targetComboBox))->setAlignment(Qt::AlignLeft);
 
     setContentLayout(formLayout);
@@ -43,12 +43,12 @@ Project::Target NewProject::target() const {
     return static_cast<Project::Target>(m_targetComboBox->currentIndex());
 }
 
-QString NewProject::directory() const {
-    return m_directoryBrowseLayout->lineEdit()->text();
+QString NewProject::workspace() const {
+    return m_workspaceBrowseLayout->lineEdit()->text();
 }
 
 void NewProject::accept() {
-    if (QDir().exists(directory() + "/" + name() + ".norm")) {
+    if (QDir().exists(workspace() + "/" + name() + ".norm")) {
         QMessageBox::critical(this, {}, tr("Project already exists!"));
     } else {
         StandardDialog::accept();
@@ -56,6 +56,6 @@ void NewProject::accept() {
 }
 
 void NewProject::setOkButtonState() {
-    bool isAllFieldsFilled = !(m_nameLineEdit->text().isEmpty() || m_directoryBrowseLayout->lineEdit()->text().isEmpty());
+    bool isAllFieldsFilled = !(m_nameLineEdit->text().isEmpty() || m_workspaceBrowseLayout->lineEdit()->text().isEmpty());
     buttonBox()->button(QDialogButtonBox::Ok)->setEnabled(isAllFieldsFilled);
 }

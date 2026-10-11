@@ -13,8 +13,7 @@ public:
 
     QString name() const;
     Project::Target target() const;
-
-    QString directory() const;
+    QString workspace() const;
 
 public slots:
     void accept() override;
@@ -25,5 +24,5 @@ private slots:
 private:
     QLineEdit* m_nameLineEdit = nullptr;
     QComboBox* m_targetComboBox = nullptr;
-    BrowseLayout* m_directoryBrowseLayout = nullptr;
+    BrowseLayout* m_workspaceBrowseLayout = nullptr;
 };

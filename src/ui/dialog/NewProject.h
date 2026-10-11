@@ -1,5 +1,7 @@
 #pragma once
 #include "StandardDialog.h"
+#include "project/Project.h"
+#include <QComboBox>
 
 class BrowseLayout;
 class QLineEdit;
@@ -10,6 +12,8 @@ public:
     NewProject(const QString& workDir);
 
     QString name() const;
+    Project::Target target() const;
+
     QString directory() const;
 
 public slots:
@@ -20,5 +24,6 @@ private slots:
 
 private:
     QLineEdit* m_nameLineEdit = nullptr;
+    QComboBox* m_targetComboBox = nullptr;
     BrowseLayout* m_directoryBrowseLayout = nullptr;
 };

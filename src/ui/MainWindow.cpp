@@ -1,8 +1,10 @@
 #include "MainWindow.h"
 #include "core/Application.h"
+#include "ui/dialog/NewProject.h"
 #include "settings/FileSettings.h"
 #include <QMenuBar>
 #include <QMessageBox>
+#include <QStandardPaths>
 #include <QCloseEvent>
 
 MainWindow::MainWindow() {
@@ -20,7 +22,9 @@ void MainWindow::closeEvent(QCloseEvent* event) {
 }
 
 void MainWindow::showNewProject() {
-    qDebug() << "new project";
+    QString workDir = QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation) + "/" + Application::Organization + "/projects";
+    NewProject newProject(workDir);
+    if (newProject.exec() != QDialog::Accepted) return;
 }
 
 void MainWindow::showAbout() {

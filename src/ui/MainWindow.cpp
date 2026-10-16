@@ -1,5 +1,6 @@
 #include "MainWindow.h"
 #include "core/Application.h"
+#include "ui/dialog/NewNormspace.h"
 #include "ui/dialog/NewProject.h"
 #include "settings/FileSettings.h"
 #include <QMenuBar>
@@ -19,6 +20,14 @@ MainWindow::MainWindow() {
 void MainWindow::closeEvent(QCloseEvent* event) {
     writeSettings();
     event->accept();
+}
+
+void MainWindow::openNewNormspaceDialog() {
+    QString workDir = QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation);
+    NewNormspace newNormspace(workDir);
+    if (newNormspace.exec() != QDialog::Accepted) return;
+
+    qDebug() << newNormspace.name() << newNormspace.directory();
 }
 
 void MainWindow::showNewProject() {
@@ -57,6 +66,7 @@ void MainWindow::createActions() {
     auto fileMenu = menuBar()->addMenu(tr("File"));
 
     auto newMenu = fileMenu->addMenu(tr("New"));
+    newMenu->addAction(tr("Normspace..."), this, &MainWindow::openNewNormspaceDialog);
     newMenu->addAction(tr("Project..."), Qt::CTRL | Qt::SHIFT | Qt::Key_N, this, &MainWindow::showNewProject);
 
     fileMenu->addSeparator();

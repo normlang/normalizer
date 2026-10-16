@@ -17,7 +17,7 @@ NewNormspace::NewNormspace(const QString& workDir) {
 
     auto formLayout = new QFormLayout;
     formLayout->addRow(tr("Name:"), m_nameLineEdit);
-    formLayout->addRow(tr("Workspace:"), m_browseLayout);
+    formLayout->addRow(tr("Directory:"), m_browseLayout);
 
     setContentLayout(formLayout);
 
@@ -36,7 +36,7 @@ QString NewNormspace::directory() const {
 
 void NewNormspace::accept() {
     if (QDir().exists(directory() + "/" + name())) {
-        QMessageBox::critical(this, {}, tr("Project already exists!"));
+        QMessageBox::critical(this, {}, tr("Normspace already exists!"));
     } else {
         StandardDialog::accept();
     }

@@ -36,7 +36,7 @@ QString NewNormspace::directory() const {
 
 void NewNormspace::accept() {
     if (QDir().exists(directory() + "/" + name())) {
-        QMessageBox::critical(this, {}, tr("Normspace already exists!"));
+        QMessageBox::critical(this, {}, tr("Directory already exists!"));
     } else {
         StandardDialog::accept();
     }

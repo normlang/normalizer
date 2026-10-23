@@ -7,7 +7,7 @@ constexpr auto Norm = "norm";
 using namespace QtTaskTree;
 
 NormProcess::NormProcess(QObject* parent) : QObject(parent) {
-    taskTree = new QTaskTree(this);
+    m_taskTree = new QTaskTree(this);
 }
 
 void NormProcess::createNormspace(const QString& name, const QString& directory, quint8 capacity) {
@@ -21,6 +21,6 @@ void NormProcess::createNormspace(const QString& name, const QString& directory,
         QProcessTask(onSetup)
     };
 
-    taskTree->setRecipe(recipe);
-    taskTree->start();
+    m_taskTree->setRecipe(recipe);
+    m_taskTree->start();
 }

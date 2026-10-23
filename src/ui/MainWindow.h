@@ -2,6 +2,7 @@
 #include <QMainWindow>
 
 class FileSettings;
+class NormProcess;
 
 class MainWindow : public QMainWindow {
     Q_OBJECT
@@ -23,4 +24,5 @@ private:
     void createActions();
 
     FileSettings* m_fileSettings = nullptr;
+    NormProcess* m_normProcess = nullptr;
 };

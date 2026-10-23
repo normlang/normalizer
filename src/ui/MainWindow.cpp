@@ -1,5 +1,6 @@
 #include "MainWindow.h"
 #include "core/Application.h"
+#include "core/NormProcess.h"
 #include "ui/dialog/NewNormspace.h"
 #include "ui/dialog/NewProject.h"
 #include "settings/FileSettings.h"
@@ -12,6 +13,7 @@ MainWindow::MainWindow() {
     setWindowTitle(Application::Name);
 
     m_fileSettings = new FileSettings(this);
+    m_normProcess = new NormProcess(this);
 
     createActions();
     readSettings();
@@ -27,7 +29,7 @@ void MainWindow::openNewNormspaceDialog() {
     NewNormspace newNormspace(workDir);
     if (newNormspace.exec() != QDialog::Accepted) return;
 
-    qDebug() << newNormspace.name() << newNormspace.directory();
+    m_normProcess->createNormspace(newNormspace.name(), newNormspace.directory(), newNormspace.capacity());
 }
 
 void MainWindow::showNewProject() {

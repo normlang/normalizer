@@ -9,6 +9,7 @@ set(REQUIRED_QT_VERSION 6.12.0)
 
 find_package(Qt6 ${REQUIRED_QT_VERSION} REQUIRED COMPONENTS
     Widgets
+    TaskTree
 )
 
 qt_standard_project_setup(

@@ -10,6 +10,7 @@ qt_add_library(common STATIC
     ui/widget/BrowseLayout.cpp ui/widget/BrowseLayout.h
     project/Project.h project/Project.cpp
     ui/dialog/NewNormspace.h ui/dialog/NewNormspace.cpp
+    core/NormProcess.h core/NormProcess.cpp
 )
 
 # For visibility in IDE (e.g., Qt Creator)

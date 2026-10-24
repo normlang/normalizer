@@ -69,7 +69,7 @@ void MainWindow::createActions() {
 
     auto newMenu = fileMenu->addMenu(tr("New"));
     newMenu->addAction(tr("Normspace..."), this, &MainWindow::openNewNormspaceDialog);
-    newMenu->addAction(tr("Project..."), Qt::CTRL | Qt::SHIFT | Qt::Key_N, this, &MainWindow::showNewProject);
+    newMenu->addAction(tr("Project..."), this, &MainWindow::showNewProject);
 
     fileMenu->addSeparator();
     fileMenu->addAction(tr("Exit"), Qt::CTRL | Qt::Key_Q, this, &QMainWindow::close);

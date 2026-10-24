@@ -32,7 +32,7 @@ void MainWindow::openNewNormspaceDialog() {
     m_normProcess->createNormspace(newNormspace.name(), newNormspace.directory(), newNormspace.capacity());
 }
 
-void MainWindow::showNewProject() {
+void MainWindow::openNewProjectDialog() {
     QString workDir = QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation) + "/" + Application::Organization + "/projects";
     NewProject newProject(workDir);
     if (newProject.exec() != QDialog::Accepted) return;
@@ -69,7 +69,7 @@ void MainWindow::createActions() {
 
     auto newMenu = fileMenu->addMenu(tr("New"));
     newMenu->addAction(tr("Normspace..."), this, &MainWindow::openNewNormspaceDialog);
-    newMenu->addAction(tr("Project..."), this, &MainWindow::showNewProject);
+    newMenu->addAction(tr("Project..."), this, &MainWindow::openNewProjectDialog);
 
     fileMenu->addSeparator();
     fileMenu->addAction(tr("Exit"), Qt::CTRL | Qt::Key_Q, this, &QMainWindow::close);

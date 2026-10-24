@@ -14,7 +14,7 @@ protected:
 
 private slots:
     void openNewNormspaceDialog();
-    void showNewProject();
+    void openNewProjectDialog();
     void showAbout();
 
 private:

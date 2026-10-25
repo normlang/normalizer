@@ -29,7 +29,7 @@ void MainWindow::openNewNormspaceDialog() {
     NewNormspace newNormspace(workDir);
     if (newNormspace.exec() != QDialog::Accepted) return;
 
-    m_normProcess->createNormspace(newNormspace.name(), newNormspace.directory(), newNormspace.capacity());
+    m_normProcess->createNormspace(newNormspace.name(), newNormspace.directory());
 }
 
 void MainWindow::openNewProjectDialog() {

@@ -10,11 +10,11 @@ NormProcess::NormProcess(QObject* parent) : QObject(parent) {
     m_taskTree = new QTaskTree(this);
 }
 
-void NormProcess::createNormspace(const QString& name, const QString& directory, quint8 capacity) {
+void NormProcess::createNormspace(const QString& name, const QString& directory) {
     const auto onSetup = [&] (QProcess& process) {
         process.setProgram(Norm);
         process.setWorkingDirectory(directory);
-        process.setArguments({ "normspace", "add", name, "-c", QString::number(capacity) });
+        process.setArguments({ "normspace", "add", name });
     };
 
     const Group recipe {

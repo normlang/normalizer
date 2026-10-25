@@ -11,7 +11,6 @@ public:
     NewNormspace(const QString& workDir);
 
     QString name() const;
-    quint8 capacity() const;
     QString directory() const;
 
 public slots:
@@ -22,6 +21,5 @@ private slots:
 
 private:
     QLineEdit* m_nameLineEdit = nullptr;
-    QComboBox* m_capacity = nullptr;
     BrowseLayout* m_browseLayout = nullptr;
 };

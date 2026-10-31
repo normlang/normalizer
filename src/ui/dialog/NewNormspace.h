@@ -3,7 +3,6 @@
 
 class BrowseLayout;
 class QLineEdit;
-class QComboBox;
 
 class NewNormspace : public StandardDialog {
     Q_OBJECT

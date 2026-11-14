@@ -55,13 +55,10 @@ void MainWindow::readSettings() {
         resize(screen()->size() * 0.75);
         move(screen()->availableGeometry().center() - rect().center());
     }
-
-    restoreState(m_fileSettings->mainWindowState());
 }
 
 void MainWindow::writeSettings() {
     m_fileSettings->setMainWindowGeometry(saveGeometry());
-    m_fileSettings->setMainWindowState(saveState());
 }
 
 void MainWindow::createActions() {

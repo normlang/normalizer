@@ -1,14 +1,15 @@
 #pragma once
 #include <QString>
 
+template <typename T>
 class Id {
 public:
-    Id(quint64 id = 0);
+    Id(T id = 0) : m_id(id) {}
 
-    quint64 value() const;
-    QString toString() const;
+    T value() const { return m_id; }
+    QString toString() const { return QString::number(m_id); }
 
-    bool isValid() const;
+    bool isValid() const { return m_id > 0; }
 
     bool operator==(const Id& other) const {
         return m_id == other.m_id;
@@ -19,7 +20,18 @@ public:
     }
 
 private:
-    quint64 m_id = 0;
+    T m_id = 0;
 };
 
-using Ids = QVector<Id>;
+using Id8 = Id<quint8>;
+using Id16 = Id<quint16>;
+using Id32 = Id<quint32>;
+using Id64 = Id<quint64>;
+
+template <typename T>
+using Ids = QVector<T>;
+
+using Ids8 = Ids<quint8>;
+using Ids16 = Ids<quint16>;
+using Ids32 = Ids<quint32>;
+using Ids64 = Ids<quint64>;

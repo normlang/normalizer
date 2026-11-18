@@ -10,7 +10,7 @@ NormProcess::NormProcess(QObject* parent) : QObject(parent) {
     m_taskTree = new QTaskTree(this);
 }
 
-void NormProcess::createNormspace(const QString& name, const QString& directory) {
+void NormProcess::addNormspace(const QString& name, const QString& directory) {
     const auto onSetup = [&] (QProcess& process) {
         process.setProgram(Norm);
         process.setWorkingDirectory(directory);

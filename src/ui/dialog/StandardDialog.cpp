@@ -1,12 +1,12 @@
 #include "StandardDialog.h"
 #include <QDialogButtonBox>
+#include <QPushButton>
 #include <QVBoxLayout>
-#include <qpushbutton.h>
 
 StandardDialog::StandardDialog(QWidget* parent) : QDialog(parent) {
     m_buttonBox = new QDialogButtonBox;
     m_buttonBox->setOrientation(Qt::Horizontal);
-    m_buttonBox->setStandardButtons(QDialogButtonBox::Ok|QDialogButtonBox::Cancel);
+    m_buttonBox->setStandardButtons(QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
 
     connect(m_buttonBox, &QDialogButtonBox::accepted, this, &QDialog::accept);
     connect(m_buttonBox, &QDialogButtonBox::rejected, this, &QDialog::reject);

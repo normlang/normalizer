@@ -1,6 +1,7 @@
 #include "StandardDialog.h"
 #include <QDialogButtonBox>
 #include <QVBoxLayout>
+#include <qpushbutton.h>
 
 StandardDialog::StandardDialog(QWidget* parent) : QDialog(parent) {
     m_buttonBox = new QDialogButtonBox;
@@ -35,6 +36,10 @@ void StandardDialog::setContentLayout(QLayout* contentLayout, bool stretchAfter)
     if (stretchAfter) {
         verticalLayout->insertStretch(1);
     }
+}
+
+void StandardDialog::setOkButtonEnabled(bool enabled) {
+    m_buttonBox->button(QDialogButtonBox::Ok)->setEnabled(enabled);
 }
 
 void StandardDialog::resizeToWidth(int width) {

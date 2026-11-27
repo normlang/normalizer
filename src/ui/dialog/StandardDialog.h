@@ -14,6 +14,8 @@ public:
     void setContentWidget(QWidget* contentWidget, bool stretchAfter = true);
     void setContentLayout(QLayout* contentLayout, bool stretchAfter = true);
 
+    void setOkButtonEnabled(bool enabled);
+
 private:
     QDialogButtonBox* m_buttonBox = nullptr;
 };

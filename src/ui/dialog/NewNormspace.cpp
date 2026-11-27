@@ -3,7 +3,6 @@
 #include <QLineEdit>
 #include <QFormLayout>
 #include <QMessageBox>
-#include <QPushButton>
 #include <QDir>
 
 NewNormspace::NewNormspace(const QString& workDir) {
@@ -44,5 +43,5 @@ void NewNormspace::accept() {
 
 void NewNormspace::setOkButtonState() {
     bool isAllFieldsFilled = !(m_nameLineEdit->text().isEmpty() || m_browseLayout->lineEdit()->text().isEmpty());
-    buttonBox()->button(QDialogButtonBox::Ok)->setEnabled(isAllFieldsFilled);
+    setOkButtonEnabled(isAllFieldsFilled);
 }

@@ -3,8 +3,6 @@
 #include <QLineEdit>
 #include <QIntValidator>
 #include <QFormLayout>
-#include <QDialogButtonBox>
-#include <QPushButton>
 #include <QComboBox>
 #include <QMessageBox>
 #include <QDir>
@@ -57,5 +55,5 @@ void NewProject::accept() {
 
 void NewProject::setOkButtonState() {
     bool isAllFieldsFilled = !(m_nameLineEdit->text().isEmpty() || m_workspaceBrowseLayout->lineEdit()->text().isEmpty());
-    buttonBox()->button(QDialogButtonBox::Ok)->setEnabled(isAllFieldsFilled);
+    setOkButtonEnabled(isAllFieldsFilled);
 }

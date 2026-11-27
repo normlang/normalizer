@@ -1,7 +1,5 @@
 #include "NewWorkspace.h"
 #include <QLineEdit>
-#include <QMessageBox>
-#include <QPushButton>
 #include <QFormLayout>
 
 NewWorkspace::NewWorkspace() {
@@ -25,5 +23,5 @@ QString NewWorkspace::name() const {
 }
 
 void NewWorkspace::setOkButtonState() {
-    buttonBox()->button(QDialogButtonBox::Ok)->setEnabled(!m_nameLineEdit->text().isEmpty());
+    setOkButtonEnabled(!m_nameLineEdit->text().isEmpty());
 }

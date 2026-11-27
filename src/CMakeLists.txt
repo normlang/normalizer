@@ -12,6 +12,7 @@ qt_add_library(common STATIC
     ui/dialog/NewNormspace.h ui/dialog/NewNormspace.cpp
     core/NormProcess.h core/NormProcess.cpp
     core/Id.h
+    ui/dialog/NewWorkspace.h ui/dialog/NewWorkspace.cpp
 )
 
 # For visibility in IDE (e.g., Qt Creator)

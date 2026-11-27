@@ -2,6 +2,7 @@
 #include "core/Application.h"
 #include "core/NormProcess.h"
 #include "ui/dialog/NewNormspace.h"
+#include "ui/dialog/NewWorkspace.h"
 #include "ui/dialog/NewProject.h"
 #include "settings/FileSettings.h"
 #include <QMenuBar>
@@ -30,6 +31,13 @@ void MainWindow::openNewNormspaceDialog() {
     if (newNormspace.exec() != QDialog::Accepted) return;
 
     m_normProcess->addNormspace(newNormspace.name(), newNormspace.directory());
+}
+
+void MainWindow::openNewWorkspaceDialog() {
+    NewWorkspace newWorkspace;
+    if (newWorkspace.exec() != QDialog::Accepted) return;
+
+    m_normProcess->addWorkspace(newWorkspace.name());
 }
 
 void MainWindow::openNewProjectDialog() {
@@ -66,6 +74,7 @@ void MainWindow::createActions() {
 
     auto newMenu = fileMenu->addMenu(tr("New"));
     newMenu->addAction(tr("Normspace..."), this, &MainWindow::openNewNormspaceDialog);
+    newMenu->addAction(tr("Workspace..."), this, &MainWindow::openNewWorkspaceDialog);
     newMenu->addAction(tr("Project..."), this, &MainWindow::openNewProjectDialog);
 
     fileMenu->addSeparator();

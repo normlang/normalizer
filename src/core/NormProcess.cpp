@@ -24,3 +24,7 @@ void NormProcess::addNormspace(const QString& name, const QString& directory) {
     m_taskTree->setRecipe(recipe);
     m_taskTree->start();
 }
+
+void NormProcess::addWorkspace(const QString& name) {
+
+}

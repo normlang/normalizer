@@ -25,7 +25,7 @@ void MainWindow::closeEvent(QCloseEvent* event) {
     event->accept();
 }
 
-void MainWindow::openNewNormspaceDialog() {
+void MainWindow::openNewNormspace() {
     QString workDir = QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation);
     NewNormspace newNormspace(workDir);
     if (newNormspace.exec() != QDialog::Accepted) return;
@@ -33,20 +33,20 @@ void MainWindow::openNewNormspaceDialog() {
     m_normProcess->addNormspace(newNormspace.name(), newNormspace.directory());
 }
 
-void MainWindow::openNewWorkspaceDialog() {
+void MainWindow::openNewWorkspace() {
     NewWorkspace newWorkspace;
     if (newWorkspace.exec() != QDialog::Accepted) return;
 
     m_normProcess->addWorkspace(newWorkspace.name());
 }
 
-void MainWindow::openNewProjectDialog() {
+void MainWindow::openNewProject() {
     QString workDir = QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation) + "/" + Application::Organization + "/projects";
     NewProject newProject(workDir);
     if (newProject.exec() != QDialog::Accepted) return;
 }
 
-void MainWindow::showAbout() {
+void MainWindow::openAbout() {
     QMessageBox::about(this, tr("About %1").arg(Application::Name),
 tr(R"(<h3>%1 %2</h3>
 IDE for Norm programming language<br><br>
@@ -73,13 +73,13 @@ void MainWindow::createActions() {
     auto fileMenu = menuBar()->addMenu(tr("File"));
 
     auto newMenu = fileMenu->addMenu(tr("New"));
-    newMenu->addAction(tr("Normspace..."), this, &MainWindow::openNewNormspaceDialog);
-    newMenu->addAction(tr("Workspace..."), this, &MainWindow::openNewWorkspaceDialog);
-    newMenu->addAction(tr("Project..."), this, &MainWindow::openNewProjectDialog);
+    newMenu->addAction(tr("Normspace..."), this, &MainWindow::openNewNormspace);
+    newMenu->addAction(tr("Workspace..."), this, &MainWindow::openNewWorkspace);
+    newMenu->addAction(tr("Project..."), this, &MainWindow::openNewProject);
 
     fileMenu->addSeparator();
     fileMenu->addAction(tr("Exit"), Qt::CTRL | Qt::Key_Q, this, &QMainWindow::close);
 
     auto helpMenu = menuBar()->addMenu(tr("Help"));
-    helpMenu->addAction(tr("About %1...").arg(Application::Name), this, &MainWindow::showAbout);
+    helpMenu->addAction(tr("About %1...").arg(Application::Name), this, &MainWindow::openAbout);
 }

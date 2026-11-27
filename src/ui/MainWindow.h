@@ -13,10 +13,10 @@ protected:
     void closeEvent(QCloseEvent* event) override;
 
 private slots:
-    void openNewNormspaceDialog();
-    void openNewWorkspaceDialog();
-    void openNewProjectDialog();
-    void showAbout();
+    void openNewNormspace();
+    void openNewWorkspace();
+    void openNewProject();
+    void openAbout();
 
 private:
     void readSettings();
